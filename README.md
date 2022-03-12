@@ -1,6 +1,6 @@
-# Tai-Shang-Voxel-Handler
+# Tai-Shang-Ascii-NFT-Wallet
 
-focusing on handle voxel, voxel NFT and actual 3D model of voxel NFT by 3D printer.
+focusing on handle ascii nft that define by NonceGeek, that nft can be used as props or characters or somethin else in TaiShangVerse.
 
 0. Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) plus [Yarn](https://classic.yarnpkg.com/en/docs/install/) and [Git](https://git-scm.com/downloads)
 
