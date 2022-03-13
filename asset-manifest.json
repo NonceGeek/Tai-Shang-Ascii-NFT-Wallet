@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Tai-Shang-Ascii-NFT-Wallet/static/css/main.bb62dc15.chunk.css",
+    "main.js": "/Tai-Shang-Ascii-NFT-Wallet/static/js/main.00f3843d.chunk.js",
+    "main.js.map": "/Tai-Shang-Ascii-NFT-Wallet/static/js/main.00f3843d.chunk.js.map",
+    "runtime-main.js": "/Tai-Shang-Ascii-NFT-Wallet/static/js/runtime-main.fe2a8fee.js",
+    "runtime-main.js.map": "/Tai-Shang-Ascii-NFT-Wallet/static/js/runtime-main.fe2a8fee.js.map",
+    "static/css/2.0dcad14b.chunk.css": "/Tai-Shang-Ascii-NFT-Wallet/static/css/2.0dcad14b.chunk.css",
+    "static/js/2.60af0dc2.chunk.js": "/Tai-Shang-Ascii-NFT-Wallet/static/js/2.60af0dc2.chunk.js",
+    "static/js/2.60af0dc2.chunk.js.map": "/Tai-Shang-Ascii-NFT-Wallet/static/js/2.60af0dc2.chunk.js.map",
+    "index.html": "/Tai-Shang-Ascii-NFT-Wallet/index.html",
+    "static/css/2.0dcad14b.chunk.css.map": "/Tai-Shang-Ascii-NFT-Wallet/static/css/2.0dcad14b.chunk.css.map",
+    "static/css/main.bb62dc15.chunk.css.map": "/Tai-Shang-Ascii-NFT-Wallet/static/css/main.bb62dc15.chunk.css.map",
+    "static/js/2.60af0dc2.chunk.js.LICENSE.txt": "/Tai-Shang-Ascii-NFT-Wallet/static/js/2.60af0dc2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fe2a8fee.js",
+    "static/css/2.0dcad14b.chunk.css",
+    "static/js/2.60af0dc2.chunk.js",
+    "static/css/main.bb62dc15.chunk.css",
+    "static/js/main.00f3843d.chunk.js"
+  ]
+}
