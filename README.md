@@ -33,23 +33,3 @@ yarn deploy
 ```
 
 5. Open http://localhost:3000 to see the app.
-
-6. Download MagicAscii, use it to make something and save as Ascii file.
-
-![1](tutorial_pictures/1_generate%20Ascii%20file.png)
-
-7. Upload Ascii file to permaweb, login with Arweave wallet first(a json file, create first if having none).
-
-![2](tutorial_pictures/2_upload%20Ascii%20file%20to%20permaweb.png)
-
-8. [Using Github pages to serve Ascii as HTML](https://mirror.xyz/0x73c7448760517E3E6e416b2c130E3c6dB2026A1d/OzUFOPfgAcZQ4MY1eu3ce87SMULiccAFeeIcCWBfuAg).
-
-9. Mint Ascii file as NFT, you will get all required data if you totally follow the above article.
-
-![3](tutorial_pictures/3_mint%20Ascii%20as%20nft.png)
-
-10. [Run Backend](https://github.com/WeLightProject/Tai-Shang-Ascii-NFT-Wallet/blob/master/backend/Ascii_handler/README.md), submit the order from dApp to backend.
-
-11. Done! Enjoy and try it!
-
-![4](tutorial_pictures/4_final%20nft.png)
