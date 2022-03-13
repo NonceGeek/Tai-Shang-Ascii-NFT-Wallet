@@ -33,7 +33,8 @@ function Home({
       {/* Mint button */}
       <div style={{ maxWidth: 820, margin: "auto", marginTop: 32, paddingBottom: 32 }}>
         <div style={{ margin: 10}}>
-          <span>Vox URI</span>
+          <span>Ascii Page URL<a href="https://taishang.leeduckgo.com/live/ascii_gallery">how can I generate a page?</a>
+          </span>
           <Input
             placeholder="eg. https://5ywn6daenz6poefpjkgs3c2vdgtzsk2vevam6aozkfzzzwrmgi.arweave.net/nFF3J4VB0BP9eHt35gdffGuwCXaHfXwtJl2K6u4GyA0"
             onChange={e => {
@@ -41,29 +42,11 @@ function Home({
             }}
           />
         </div>
-        <div style={{ margin: 10}}>
-          <span>Github Pages URL</span>
-          <Input
-            placeholder="eg. https://welightproject.github.io/voxel-viewer-page/"
-            onChange={e => {
-              setMintData({...mintData, url: e.target.value});
-            }}
-          />
-        </div>
-        <div style={{ margin: 10}}>
-          <span>Commit Hash</span>
-          <Input
-            placeholder="eg. e070f55ef44f41661a65048c0fd30af33e20ff7c"
-            onChange={e => {
-              setMintData({...mintData, commit: e.target.value});
-            }}
-          />
-        </div>
         {isSigner ? (
           <Button
             type={"primary"}
             onClick={() => {
-              tx(writeContracts.TaiShangVoxel.mint(mintData.uri, mintData.url, mintData.commit));
+              tx(writeContracts.TaiShangAscii.mint(mintData.uri));
             }}
           >
             MINT
@@ -80,7 +63,7 @@ function Home({
           dataSource={yourCollectibles}
           renderItem={item => {
             const id = item.id.toNumber();
-            console.log("IMAGE",item.image)
+            console.log("IMAGE",item)
             return (
               <List.Item key={id + "_" + item.uri + "_" + item.owner}>
                 <Card
@@ -90,9 +73,9 @@ function Home({
                     </div>
                   }
                 >
-                  <a href={"https://opensea.io/assets/"+(readContracts && readContracts.TaiShangVoxel && readContracts.TaiShangVoxel.address)+"/"+item.id} target="_blank">
+                  <a href={"https://opensea.io/assets/"+(readContracts && readContracts.TaiShangAscii && readContracts.TaiShangAscii.address)+"/"+item.id} target="_blank">
                   {/* <img src={item.image} /> */}
-                  <iframe src={item.external_url} style={{width: "200px",height: "200px"}}></iframe>
+                  <iframe src={item.image} style={{width: "200px",height: "200px"}}></iframe>
                   </a>
                   <div>{item.description}</div>
                 </Card>
@@ -118,7 +101,7 @@ function Home({
                   <Button
                     onClick={() => {
                       console.log("writeContracts", writeContracts);
-                      tx(writeContracts.TaiShangVoxel.transferFrom(address, transferToAddresses[id], id));
+                      tx(writeContracts.TaiShangAscii.transferFrom(address, transferToAddresses[id], id));
                     }}
                   >
                     Transfer

@@ -66,9 +66,9 @@ const USE_NETWORK_SELECTOR = false;
 
 const web3Modal = Web3ModalSetup();
 
-// backend for voxel_handler
-const serverUrl = "https://bewater.leeduckgo.com/voxel_handler/api/v1/place_order"; // elixir backend
-// const serverUrl = "http://localhost:4000/voxel_handler/api/v1/place_order"; // elixir backend
+// backend for Ascii_handler
+const serverUrl = "https://bewater.leeduckgo.com/Ascii_handler/api/v1/place_order"; // elixir backend
+// const serverUrl = "http://localhost:4000/Ascii_handler/api/v1/place_order"; // elixir backend
 // 🛰 providers
 const providers = [
   "https://eth-mainnet.gateway.pokt.network/v1/lb/611156b4a585a20035148406",
@@ -180,11 +180,11 @@ function App(props) {
   console.log("🏷 Resolved austingriffith.eth as:",addressFromENS)
   */
   // keep track of a variable from the contract in the local React state:
-  const balance = useContractReader(readContracts, "TaiShangVoxel", "balanceOf", [address]);
+  const balance = useContractReader(readContracts, "TaiShangAscii", "balanceOf", [address]);
   console.log("🤗 balance:", balance);
 
   // 📟 Listen for broadcast events
-  // const transferEvents = useEventListener(readContracts, "TaiShangVoxel", "Transfer", localProvider, 1);
+  // const transferEvents = useEventListener(readContracts, "TaiShangAscii", "Transfer", localProvider, 1);
   // console.log("📟 Transfer events:", transferEvents);
   //
   // 🧠 This effect will update yourCollectibles by polling when your balance changes
@@ -198,9 +198,9 @@ function App(props) {
       for (let tokenIndex = 0; tokenIndex < balance; tokenIndex++) {
         try {
           console.log("GEtting token index", tokenIndex);
-          const tokenId = await readContracts.TaiShangVoxel.tokenOfOwnerByIndex(address, tokenIndex);
+          const tokenId = await readContracts.TaiShangAscii.tokenOfOwnerByIndex(address, tokenIndex);
           console.log("tokenId", tokenId);
-          const tokenURI = await readContracts.TaiShangVoxel.tokenURI(tokenId);
+          const tokenURI = await readContracts.TaiShangAscii.tokenURI(tokenId);
           const jsonManifestString = atob(tokenURI.substring(29))
           console.log("tokenURI", tokenURI);
           console.log("jsonManifestString", jsonManifestString);
@@ -306,84 +306,6 @@ function App(props) {
   let [msgToSign, setMsgToSign] = useState()
   const [extraData, setExtraData] = useState('leeduckgo; 0x01; +86 13323232323; Beijing, China')
 
-  const handleSignDataChange = (e) => {
-    setExtraData(e.target.value)
-  }
-  if(result){
-    let possibleTxId = result.substr(-66)
-    console.log("possibleTxId",possibleTxId)
-    let extraLink = ""
-    if(possibleTxId.indexOf("0x")==0){
-      extraLink = <a href={blockExplorer+"tx/"+possibleTxId} target="_blank">view transaction on etherscan</a>
-    }else{
-      possibleTxId=""
-    }
-    display = (
-      <div style={{marginTop:32}}>
-        {result.replace(possibleTxId,"")} {extraLink}
-      </div>
-    )
-
-  } else if(isSigner){
-    display = (
-      <div>
-        <div>
-        <p>Add your information(name, nft token ID of which you want to print to 3D Model, tel and addr):</p>
-        <textarea
-            type="text"
-            value={extraData}
-            onChange={handleSignDataChange}
-            style={{ width: '25%', minHeight: '10px', marginTop: '5px' }}
-          ></textarea>
-        </div>
-      <Button loading={loading} style={{marginTop:32}} type="primary" onClick={async ()=>{
-
-        setLoading(true)
-        try{
-          msgToSign = await axios.get(serverUrl)
-          setMsgToSign(msgToSign)
-          console.log("msgToSign", msgToSign)
-          // TODO: change "DongciDaciDongciDaciDongciDaciDongciDaciDongciDaci" to an text area above the btn
-          let message = msgToSign.data + ";" + extraData;
-          if(message && message.length > 32){//<--- traffic escape hatch?
-            let currentLoader = setTimeout(()=>{setLoading(false)},4000)
-            // let message = msgToSign.data.replace("**ADDRESS**",address)
-            
-            let sig = await injectedProvider.send("personal_sign", [ message, address ]);
-            clearTimeout(currentLoader);
-            currentLoader = setTimeout(()=>{setLoading(false)},4000);
-            console.log("sig",sig)
-            const res = await axios.post(serverUrl, {
-              address: address,
-              message: message,
-              signature: sig,
-              unique_id: msgToSign.data,
-            })
-            clearTimeout(currentLoader)
-            setLoading(false)
-            console.log("RESULT:",res)
-            if(res.data){
-              setResult(res.data)
-            }
-          }else{
-            setLoading(false)
-            setResult("😅 Sorry, the server is overloaded. Please try again later. ⏳")
-          }
-        }catch(e){
-          message.error(' Sorry, the server is overloaded. 🧯🚒🔥');
-          console.log("FAILED TO GET...")
-          console.log("hhhh"+e)
-        }
-
-
-
-      }}>
-        <span style={{marginRight:8}}>🔏</span>  sign order info and submit
-      </Button>
-      </div>
-    )
-  }
-
   return (
     <div className="App">
       {/* ✏️ Edit the header and change the title to your project name */}
@@ -397,14 +319,14 @@ function App(props) {
         USE_NETWORK_SELECTOR={USE_NETWORK_SELECTOR}
       />
       <Menu style={{ textAlign: "center", marginTop: 40 }} selectedKeys={[location.pathname]} mode="horizontal">
-        <Menu.Item key="/Tai-Shang-Voxel-Handler">
-          <Link to="/Tai-Shang-Voxel-Handler">App Home</Link>
+        <Menu.Item key="/Tai-Shang-Ascii-Handler">
+          <Link to="/Tai-Shang-Ascii-Handler">App Home</Link>
         </Menu.Item>
-        <Menu.Item key="/Tai-Shang-Voxel-Handler/debug">
-          <Link to="/Tai-Shang-Voxel-Handler/debug">Debug Contracts</Link>
+        <Menu.Item key="/Tai-Shang-Ascii-Handler/debug">
+          <Link to="/Tai-Shang-Ascii-Handler/debug">Debug Contracts</Link>
         </Menu.Item>
-        <Menu.Item key="/Tai-Shang-Voxel-Handler/play_with_voxel">
-          <Link to="/Tai-Shang-Voxel-Handler/play_with_voxel">Play With Voxel</Link>
+        <Menu.Item key="/Tai-Shang-Ascii-Handler/play_with_Ascii">
+          <Link to="/Tai-Shang-Ascii-Handler/play_with_Ascii">Play With Ascii</Link>
         </Menu.Item>
         {/* <Menu.Item key="/hints">
           <Link to="/hints">Hints</Link>
@@ -421,7 +343,7 @@ function App(props) {
       </Menu>
 
       <Switch>
-        <Route exact path="/Tai-Shang-Voxel-Handler/">
+        <Route exact path="/Tai-Shang-Ascii-Handler/">
           {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
           <Home
             isSigner={userSigner}
@@ -435,7 +357,7 @@ function App(props) {
             readContracts={readContracts}
             />
         </Route>
-        <Route exact path="/Tai-Shang-Voxel-Handler/debug">
+        <Route exact path="/Tai-Shang-Ascii-Handler/debug">
           {/*
                 🎛 this scaffolding is full of commonly used components
                 this <Contract/> component will automatically parse your ABI
@@ -443,7 +365,7 @@ function App(props) {
             */}
 
           <Contract
-            name="TaiShangVoxel"
+            name="TaiShangAscii"
             price={price}
             signer={userSigner}
             provider={localProvider}
@@ -452,49 +374,34 @@ function App(props) {
             contractConfig={contractConfig}
           />
         </Route>
-        <Route exact path="/Tai-Shang-Voxel-Handler/play_with_voxel">
+        <Route exact path="/Tai-Shang-Ascii-Handler/play_with_ascii">
           <p></p>
           <p></p>
           <p>
             {/*
               todo: style good
             */}
-            <img src="/magic-voxel.jpeg" style={{ zoom: '5%' }} alt="MagicVoxel"/>
-            Create Voxels! &nbsp;
-            <a href="https://www.youtube.com/watch?v=J5fK79E_RXE" target="_blank" rel="noreferrer">
-              Tutorial
-            </a>
-            &nbsp;/&nbsp;
-            <a href="https://ephtracy.github.io/#ss-carousel_ss" target="_blank" rel="noreferrer">
-              Download MagicVoxel
+            View Ascii Gallery! &nbsp;
+            <a href="https://taishang.leeduckgo.com/live/ascii_gallery" target="_blank" rel="noreferrer">
+              Gallery for Ascii
             </a>
           </p>
           <p></p>
           <p>↓</p>
           <p></p>
           <a href="https://arweave.net/7izfDARufPcQr0qNLYtVGaeZK1UlQM8B_2VFznNosMs" target="_blank" rel="noreferrer">
-            Upload Voxel File to Arweave by Permaweb Dropper on Arweave
+            Upload Voxel File to Arweave(pay by AR Token) 
           </a>
-          <p></p>
-          <p>↓</p>
-          <p></p>
-          <a href="https://mirror.xyz/0x73c7448760517E3E6e416b2c130E3c6dB2026A1d/OzUFOPfgAcZQ4MY1eu3ce87SMULiccAFeeIcCWBfuAg" target="_blank" rel="noreferrer">
-            Voxel to HTML by Github-pages Using Template
+          &nbsp;/&nbsp;
+          <a href="https://welightproject.github.io/Tai-Shang-Arweave-Uploader-Plugin/" target="_blank" rel="noreferrer">
+            Upload Voxel File to Arweave(pay by MATIC with Metamask)
           </a>
-          <p></p>
           <p>↓</p>
           <p></p>
           <a href="/" target="" rel="noreferrer">
-            Mint Voxel as an NFT!
+            Mint Ascii as an NFT!
           </a>
-          <p></p>
-          <p>↓</p>
-          <p></p>
-          <p>
-            Make Voxel NFT from Virtual to Actual One by 3D Print! 
-          </p>
           <br></br>
-          {display}
         </Route>
       </Switch>
 
