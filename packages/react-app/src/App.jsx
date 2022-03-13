@@ -319,14 +319,14 @@ function App(props) {
         USE_NETWORK_SELECTOR={USE_NETWORK_SELECTOR}
       />
       <Menu style={{ textAlign: "center", marginTop: 40 }} selectedKeys={[location.pathname]} mode="horizontal">
-        <Menu.Item key="/Tai-Shang-Ascii-Handler">
-          <Link to="/Tai-Shang-Ascii-Handler">App Home</Link>
+        <Menu.Item key="/Tai-Shang-Ascii-NFT-Wallet">
+          <Link to="/Tai-Shang-Ascii-NFT-Wallet">App Home</Link>
         </Menu.Item>
-        <Menu.Item key="/Tai-Shang-Ascii-Handler/debug">
-          <Link to="/Tai-Shang-Ascii-Handler/debug">Debug Contracts</Link>
+        <Menu.Item key="/Tai-Shang-Ascii-NFT-Wallet/debug">
+          <Link to="/Tai-Shang-Ascii-NFT-Wallet/debug">Debug Contracts</Link>
         </Menu.Item>
-        <Menu.Item key="/Tai-Shang-Ascii-Handler/play_with_Ascii">
-          <Link to="/Tai-Shang-Ascii-Handler/play_with_Ascii">Play With Ascii</Link>
+        <Menu.Item key="/Tai-Shang-Ascii-NFT-Wallet/play_with_Ascii">
+          <Link to="/Tai-Shang-Ascii-NFT-Wallet/play_with_Ascii">Play With Ascii</Link>
         </Menu.Item>
         {/* <Menu.Item key="/hints">
           <Link to="/hints">Hints</Link>
@@ -343,7 +343,7 @@ function App(props) {
       </Menu>
 
       <Switch>
-        <Route exact path="/Tai-Shang-Ascii-Handler/">
+        <Route exact path="/Tai-Shang-Ascii-NFT-Wallet/">
           {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
           <Home
             isSigner={userSigner}
@@ -357,7 +357,7 @@ function App(props) {
             readContracts={readContracts}
             />
         </Route>
-        <Route exact path="/Tai-Shang-Ascii-Handler/debug">
+        <Route exact path="/Tai-Shang-Ascii-NFT-Wallet/debug">
           {/*
                 🎛 this scaffolding is full of commonly used components
                 this <Contract/> component will automatically parse your ABI
@@ -374,7 +374,7 @@ function App(props) {
             contractConfig={contractConfig}
           />
         </Route>
-        <Route exact path="/Tai-Shang-Ascii-Handler/play_with_ascii">
+        <Route exact path="/Tai-Shang-Ascii-NFT-Wallet/play_with_ascii">
           <p></p>
           <p></p>
           <p>

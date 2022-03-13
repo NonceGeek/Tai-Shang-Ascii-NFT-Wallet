@@ -4,16 +4,16 @@ focusing on handle ascii nft that define by NonceGeek, that nft can be used as p
 
 0. Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) plus [Yarn](https://classic.yarnpkg.com/en/docs/install/) and [Git](https://git-scm.com/downloads)
 
-1. clone/fork WeLightProject/Tai-Shang-Ascii-Handler:
+1. clone/fork WeLightProject/Tai-Shang-Ascii-NFT-Wallet:
 
 ```bash
-git clone https://github.com/WeLightProject/Tai-Shang-Ascii-Handler.git
+git clone https://github.com/WeLightProject/Tai-Shang-Ascii-NFT-Wallet.git
 ```
 
 2. install and start your Hardhat chain:
 
 ```bash
-cd Tai-Shang-Ascii-Handler
+cd Tai-Shang-Ascii-NFT-Wallet
 yarn install
 yarn chain
 ```
@@ -21,14 +21,14 @@ yarn chain
 3. in a second terminal window, start your frontend:
 
 ```bash
-cd Tai-Shang-Ascii-Handler
+cd Tai-Shang-Ascii-NFT-Wallet
 yarn start
 ```
 
 4. in a third terminal window, deploy your contract:
 
 ```bash
-cd Tai-Shang-Ascii-Handler
+cd Tai-Shang-Ascii-NFT-Wallet
 yarn deploy
 ```
 
@@ -48,7 +48,7 @@ yarn deploy
 
 ![3](tutorial_pictures/3_mint%20Ascii%20as%20nft.png)
 
-10. [Run Backend](https://github.com/WeLightProject/Tai-Shang-Ascii-Handler/blob/master/backend/Ascii_handler/README.md), submit the order from dApp to backend.
+10. [Run Backend](https://github.com/WeLightProject/Tai-Shang-Ascii-NFT-Wallet/blob/master/backend/Ascii_handler/README.md), submit the order from dApp to backend.
 
 11. Done! Enjoy and try it!
 
