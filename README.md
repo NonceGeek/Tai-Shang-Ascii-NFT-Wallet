@@ -33,3 +33,7 @@ yarn deploy
 ```
 
 5. Open http://localhost:3000 to see the app.
+
+6. Show the Demo:
+
+![ascii_nft](https://user-images.githubusercontent.com/12784118/158069101-d1fd4c9b-c09e-46ee-a955-756b468dae68.gif)
